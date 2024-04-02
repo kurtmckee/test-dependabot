@@ -1,0 +1,14 @@
+name: CI
+on: []
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Configure Python version
+        uses: actions/setup-python@v3
+
+      - name: Python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
