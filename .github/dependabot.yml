@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: "pre-commit"
+    schedule:
+      interval: "semiannually"
+    directory: "/"
+    cooldown:
+      default-days: 20
+    groups:
+      # Security linter updates may find new issues.
+      # They are grouped separately so their PRs can be prioritized.
+      pre-commit-security:
+        patterns:
+          - "*/actionlint"
+          - "*/zizmor-pre-commit"
+
+      # Formatters are not expected to require developer intervention.
+      # For example, they can apply new whitespace rules themselves.
+      pre-commit-formatters:
+        patterns:
+          - "*/black-pre-commit-mirror"
+          - "*/isort"
+          - "*/pyupgrade"
+
+      # pre-commit linters may require developer intervention
+      # if they introduce new rules or validations.
+      pre-commit-linters:
+        patterns:
+          - "*"
