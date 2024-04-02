@@ -1,0 +1,76 @@
+ci:
+  autoupdate_schedule: "monthly"
+
+default_language_version:
+  python: "python3.13"
+
+repos:
+  - repo: "meta"
+    hooks:
+      - id: "check-hooks-apply"
+      - id: "check-useless-excludes"
+
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+    rev: "3e8a8703264a2f4a69428a0aa4dcb512790b2c8c" # frozen: v6.0.0
+    hooks:
+      - id: "check-added-large-files"
+      - id: "check-merge-conflict"
+      - id: "check-yaml"
+      - id: "end-of-file-fixer"
+        exclude: "\\.xml"
+      - id: "mixed-line-ending"
+        exclude: "\\.xml"
+        args:
+          - "--fix=lf"
+      - id: "trailing-whitespace"
+        exclude: "\\.xml"
+
+  - repo: "https://github.com/asottile/pyupgrade"
+    rev: "f90119b1b8bd9e46949d9592972b2c4c27d62a97" # frozen: v3.21.0
+    hooks:
+      - id: "pyupgrade"
+        name: "Enforce Python 3.10+ idioms"
+        args:
+          - "--py310-plus"
+
+  - repo: "https://github.com/psf/black-pre-commit-mirror"
+    rev: "fe95161893684893d68b1225356702ca71f8d388" # frozen: 25.9.0
+    hooks:
+      - id: "black"
+
+  - repo: "https://github.com/pycqa/isort"
+    rev: "0a09c783808cfe77bb3269250f663ff733d23302" # frozen: 7.0.0
+    hooks:
+      - id: "isort"
+
+  - repo: "https://github.com/pycqa/flake8"
+    rev: "c48217e1fc006c2dddd14df54e83b67da15de5cd" # frozen: 7.3.0
+    hooks:
+      - id: "flake8"
+        additional_dependencies:
+          - "flake8-toml-config==1.0.0"
+          - "flake8-bugbear==24.12.12"
+
+  - repo: "https://github.com/editorconfig-checker/editorconfig-checker"
+    rev: "ef39e5f67e1af3a4acd695037912568cdcf7c42f" # frozen: v3.4.1
+    hooks:
+      - id: "editorconfig-checker"
+
+  - repo: "https://github.com/python-jsonschema/check-jsonschema"
+    rev: "0e5b0dc11dca7b955fd97155ff03b8f857583aa8" # frozen: 0.34.1
+    hooks:
+      - id: "check-dependabot"
+      - id: "check-github-workflows"
+      - id: "check-readthedocs"
+
+  - repo: "https://github.com/rhysd/actionlint"
+    rev: "e7d448ef7507c20fc4c88a95d0c448b848cd6127" # frozen: v1.7.8
+    hooks:
+      - id: "actionlint"
+        additional_dependencies:
+          - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
+
+  - repo: "https://github.com/kurtmckee/pre-commit-hooks"
+    rev: "44b638c826f1acd2ba2c5995db3156be60c5efea" # frozen: v1.0.0
+    hooks:
+      - id: "verify-consistent-pyproject-toml-python-requirements"
