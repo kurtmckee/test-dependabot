@@ -49,10 +49,10 @@ repos:
       - id: "flake8"
         additional_dependencies:
           - "flake8-toml-config==1.0.0"
-          - "flake8-bugbear==24.12.12"
+          - "flake8-bugbear==25.11.29"
 
   - repo: "https://github.com/editorconfig-checker/editorconfig-checker"
-    rev: "ef39e5f67e1af3a4acd695037912568cdcf7c42f" # frozen: v3.4.1
+    rev: "aa06cea887b26f372f9368aa53665266ec6dc364" # frozen: v3.6.1
     hooks:
       - id: "editorconfig-checker"
 
@@ -64,7 +64,7 @@ repos:
       - id: "check-readthedocs"
 
   - repo: "https://github.com/rhysd/actionlint"
-    rev: "e7d448ef7507c20fc4c88a95d0c448b848cd6127" # frozen: v1.7.8
+    rev: "914e7df21a07ef503a81201c76d2b11c789d3fca" # frozen: v1.7.12
     hooks:
       - id: "actionlint"
         additional_dependencies:
